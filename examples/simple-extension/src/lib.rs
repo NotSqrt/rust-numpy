@@ -3,6 +3,9 @@ use ndarray::{ArrayD, ArrayViewD, ArrayViewMutD};
 use numpy::{IntoPyArray, PyArrayDyn};
 use pyo3::prelude::{pymodule, Py, PyModule, PyResult, Python};
 
+#[global_allocator]
+static ALLOC: jemallocator::Jemalloc = jemallocator::Jemalloc;
+
 #[pymodule]
 fn rust_ext(_py: Python<'_>, m: &PyModule) -> PyResult<()> {
     // immutable example
